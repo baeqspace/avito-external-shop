@@ -10,7 +10,7 @@ class AuthController {
 
         try {    
             const user = await authService.reg(email, password)
-            res.cookie('refreshToken', user.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
+            res.cookie('refreshToken', user.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: 'none', secure: true })
             res.json({ message: 'success', ...user })
         } catch(e) {
             res.json({error: e.message})
@@ -30,7 +30,7 @@ class AuthController {
 
         try {
             const user = await authService.login(email, password)
-            res.cookie('refreshToken', user.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
+            res.cookie('refreshToken', user.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: 'none', secure: true })
             res.json({ message: 'success', ...user })
         } catch(e) {
             res.json({error: e.message})
@@ -55,7 +55,7 @@ class AuthController {
 
         try {
             const user = await authService.refresh(refreshToken)
-            res.cookie('refreshToken', user.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
+            res.cookie('refreshToken', user.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: 'none', secure: true })
             res.json({ message: 'success', ...user })
         } catch (e) {
             res.clearCookie('refreshToken')
