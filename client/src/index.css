@@ -1,0 +1,304 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background .25s ease;
+}
+
+a {
+  display: flex;
+}
+
+.dark-theme {
+  --header-bg: #222;
+  --filter-bg: #444;
+  --main-bg: #333;
+  --app-text-color: white;
+  --filter-apply-bg: #666666;
+  --button-ui-bg: #666666;
+  --card-bg: #444;
+  --login-form-bg: #666666;
+  --admin-item-bg: #555;
+  --cart-bg: #444;
+  --cart-item-bg: #666666;
+  --cart-item-button-bg: #888;
+}
+
+.light-theme {
+  --header-bg: #D9D9D9;
+  --filter-bg: #CCC;
+  --main-bg: white;
+  --app-text-color: black;
+  --filter-apply-bg: #EEE;
+  --button-ui-bg: rgb(214 211 209);
+  --card-bg: #F1F1F1;
+  --login-form-bg: #DDD;
+  --admin-item-bg: #ddd;
+  --cart-bg: #eee;
+  --cart-item-bg: #ddd;
+  --cart-item-button-bg: #ccc;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+main {
+  background: var(--main-bg)
+}
+
+input {
+  color: black;
+}
+
+.logo, .card-content, .item-name, .item-price {
+  font-family: "Gugi", sans-serif;
+}
+
+#app {
+  grid-template-rows: 100px 1fr;
+  font-family: 'Ubuntu', sans-serif;
+  color: var(--app-text-color);
+}
+
+.catalog {
+  grid-template-columns: 320px 1fr;
+}
+
+header {
+  background: var(--header-bg);
+}
+
+.button-ui {
+  background: var(--button-ui-bg);
+}
+
+.filter-bar {
+  background: var(--filter-bg);
+  height: calc(100vh - 100px);
+}
+
+.filter-bar select, .filter-bar input[type=text] {
+  color: black;
+}
+
+.filter-apply {
+  background: var(--filter-apply-bg);
+}
+
+.card {
+  background: var(--card-bg);
+  grid-template-rows: 60% 40%;
+}
+
+.card-img {
+  background: #d9d9d9;
+}
+
+.item-info {
+  color: #888;
+}
+
+.page-img:hover {
+  border: 5px solid #0094ff;
+}
+
+.cards-container {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.theme-range {
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+.theme-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: 0px;
+  border-radius: 9999px;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+}
+
+.theme-range::-webkit-slider-runnable-track {
+  background-color: #333;
+  border-radius: 9999px;
+  height: 50px;
+}
+
+.theme-hint {
+  background: #bbb;
+  pointer-events: none;
+  top: 0px;
+  left: -15px;
+}
+
+.theme-range:hover ~ .theme-hint {
+  top: 60px;
+  opacity: 1;
+}
+
+/* .lang-check-label {
+  content: "🇬🇧";
+  font-size: 50px;
+}
+
+#lang-checkbox:checked ~ .lang-check-label {
+  content: "🇷🇺 Russian";
+} */
+
+.card-page-img {
+  height: 500px;
+}
+
+.theme-hint div {
+  transform: rotate(45deg) translate(0px, 18px);
+}
+
+.price-range {
+  -webkit-appearance: none;
+  background: transparent;
+  width: 150px;
+  margin-right: 10px;
+  transform: translate(0, -5px);
+}
+
+.price-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -12px;
+  border-radius: 999px;
+  width: 30px;
+  height: 30px;
+  background: #777;
+}
+
+.price-range::-webkit-slider-runnable-track {
+  background: #777;
+  height: 5px;
+}
+
+.login-form {
+  background: var(--login-form-bg);
+  width: 550px;
+  height: 450px;
+  border-radius: 50px;
+}
+
+.login-checkbox, .login-button {
+  background: #bbb;
+}
+
+.login-checkbox {
+  position: relative;
+}
+
+.login-checkbox::before {
+  width: 120px;
+  height: 50px;
+  border-radius: 999px;
+  background-color: white;
+  content: "";
+  position: absolute;
+  animation: login-uncheck .25s linear forwards
+}
+
+@keyframes login-check {
+  0% {
+    left: 0;
+    right: unset;
+    width: 120px;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    right: 0;
+    left: unset;
+  }
+}
+
+@keyframes login-uncheck {
+  0% {
+    right: 0;
+    left: unset;
+    width: 210px;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    left: 0;
+    right: unset;
+  }
+}
+
+.login-checkbox:has(input:checked)::before {
+  width: 210px;
+  animation: login-check .25s linear forwards;
+}
+
+.admin-list {
+  height: 60vh;
+}
+
+.admin-item {
+  background: var(--admin-item-bg);
+}
+
+.admin-item-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.admin-role {
+  background: #FFB800;
+}
+
+.admin-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.admin-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-list::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 20px;
+}
+
+.admin-role:hover ~ .admin-role-menu, .admin-role-menu:hover {
+  visibility: visible;
+}
+
+.modal-bg {
+  background: rgba(50,50,50, 0.75);
+}
+
+.modal {
+  background: #777;
+}
+
+.cart {
+  background: var(--cart-bg);
+  border-radius: 50px;
+}
+
+.cart-item {
+  background: var(--cart-item-bg);
+}
+
+.cart-item-button {
+  background: var(--cart-item-button-bg);
+}
+
+.cart-item-delete {
+  background: #e90000;
+}
