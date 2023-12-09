@@ -5,6 +5,7 @@ import UserRouter from './routers/UserRouter.js'
 import AvitoRouter from './routers/AvitoRouter.js'
 import cookieParser from "cookie-parser"
 import 'dotenv/config'
+import path from "path"
 
 const app = express()
 const PORT = 3000
@@ -18,6 +19,11 @@ app.use(cookieParser())
 app.use('/api-aes', AuthRouter)
 app.use('/api-aes', UserRouter)
 app.use('/api-aes', AvitoRouter)
+app.use('/baeq-aes', express.static('../client/dist'))
+
+app.get('/baeq-aes/*', (req, res) => {
+    res.sendFile(path.join(path.resolve(), '../client/dist'))
+})
 
 
 app.listen(PORT, () => {
